@@ -62,7 +62,8 @@ namespace NeatAdditions.PreviewWallpaperAndFloors
 			{
 				Vector2 position = (!Game1.wasMouseVisibleThisFrame) ? Game1.player.GetToolLocation(false) : new Vector2((float)(Game1.getOldMouseX() + Game1.viewport.X), (float)(Game1.getOldMouseY() + Game1.viewport.Y));
 				Point tile = new Point((int)position.X / 64, (int)position.Y / 64);
-				List<Rectangle> floors = (!(location is FarmHouse)) ? DecoratableLocation.getFloors() : FarmHouse.getFloors((location as FarmHouse).upgradeLevel);
+				List<Rectangle> floors = location.getFloors();
+
 				for (int i = 0; i < floors.Count; i++)
 				{
 					if (floors[i].Contains(tile))
@@ -82,8 +83,8 @@ namespace NeatAdditions.PreviewWallpaperAndFloors
 			{
 				Vector2 position = (!Game1.wasMouseVisibleThisFrame) ? Game1.player.GetToolLocation(false) : new Vector2((float)(Game1.getOldMouseX() + Game1.viewport.X), (float)(Game1.getOldMouseY() + Game1.viewport.Y));
 				Point tile = new Point((int)position.X / 64, (int)position.Y / 64);
-				List<Rectangle> walls = (!(location is FarmHouse)) ? DecoratableLocation.getWalls() : FarmHouse.getWalls((location as FarmHouse).upgradeLevel);
-				
+				List<Rectangle> walls = location.getWalls();
+
 				for (int i = 0; i < walls.Count; i++)
 				{
 					if (walls[i].Contains(tile))
